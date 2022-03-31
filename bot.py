@@ -1,7 +1,7 @@
 import telebot
 from telebot import types
 import random
-from main import FILE_NAME
+from parcer import FILE_NAME
 
 bot = telebot.TeleBot('5186365102:AAH__a3Ni8321hddfYIxmc-XFOBZ3bIuIIY')
 
@@ -94,7 +94,7 @@ def handle_text2(message):
 def callback_worker(call):
     if call.data == "yes":
         bot.send_message(call.message.chat.id,
-                         'лови актуальные ссылки : \n' + random.choice(test) + '\n для новго поиска напиши /start')
+                         'лови актуальные ссылки : \n' + random.choice(FILE_NAME) + '\n для новго поиска напиши /start')
     elif call.data == "no":
         return callback_worker
 
