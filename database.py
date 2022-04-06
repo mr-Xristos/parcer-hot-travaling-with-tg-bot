@@ -28,3 +28,11 @@ def set_users(user_id, username, first_name, last_name):
         cur.execute(f"INSERT INTO users (user_id, username, first_name, last_name) "
                 f"VALUES ('{user_id}', '{username}', '{first_name}', '{last_name}');")
         conn.commit()
+
+# def set_parcer(, username, first_name, last_name):
+#     cur.execute(f"SELECT user_id FROM users WHERE user_id = '{user_id}'")
+#     data = cur.fetchone()
+#     if data is None:
+#         cur.execute(f"INSERT INTO users (user_id, username, first_name, last_name) "
+#                 f"VALUES ('{user_id}', '{username}', '{first_name}', '{last_name}');")
+#         conn.commit()

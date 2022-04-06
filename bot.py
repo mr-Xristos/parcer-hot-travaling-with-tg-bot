@@ -24,7 +24,7 @@ def start(message):
         user_id = message.from_user.id
         markup = types.InlineKeyboardMarkup(row_width=2)
         for costable in costables:
-            bth = types.InlineKeyboardButton(costable, callback_data=costable)
+            bth = types.InlineKeyboardButton(costable, callback_data='costables')
             markup.add(bth)
         bot.send_message(user_id, """добро пожаловать в бот поиска горящих путевок. 
         для начала выбери цену в долларах""", reply_markup=markup)
@@ -36,7 +36,7 @@ def start(message):
     else:
         bot.send_message(message.from_user.id, 'напиши /start что бы начать')
 
-@bot.message_handler(func=lambda message: True, content_types=['text'])
+@bot.message_handler(func=lambda message: True, content_types=['button'])
 
 def handle_text(message):
     global cost
@@ -48,6 +48,7 @@ def handle_text(message):
         markup2.add(btn2)
     bot.send_message(costy, 'теперь можем выбрать страну', reply_markup=markup2)
     bot.register_next_step_handler(message, markups)
+
 
 
 
@@ -78,9 +79,9 @@ def callback_worker(call):
         answer = parser()
         bot.send_message(call.message.chat.id, 'лови актуальные предложения : \n'
                          + str(random.choice(answer['title']))
-                         + str(answer['costDoll'])
-                         + str(random.choice(answer['countryGo']))
-                         + str(random.choice(answer['whenFly']))
+                         + str(answer['costdoll'])
+                         + str(random.choice(answer['countrygo']))
+                         + str(random.choice(answer['whenfly']))
                          + str(random.choice(answer['href'])))
         bot.send_message(call.message.chat.id, 'для новго поиска напиши /start')
     elif call.data == "no":
